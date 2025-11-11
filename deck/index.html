@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>RLC Gathering - Baremetal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown="slides.md" data-separator="^\n---\n" data-separator-vertical="^\n--\n"></section>
+      </div>
+    </div>
+
+    <script type="module">
+      import Reveal from './node_modules/reveal.js/dist/reveal.esm.js';
+      import RevealMarkdown from './node_modules/reveal.js/plugin/markdown/markdown.esm.js';
+      import RevealHighlight from './node_modules/reveal.js/plugin/highlight/highlight.esm.js';
+
+      Reveal.initialize({
+        plugins: [RevealMarkdown, RevealHighlight]
+      });
+    </script>
+  </body>
+</html>
