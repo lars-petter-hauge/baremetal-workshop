@@ -11,8 +11,16 @@
 
 ## Exercise: Why do it?
 
-- Bullet point 1
-- Bullet point 2
+---
+
+---
+
+## Why do it?
+
+- Demystifies how a computer works.
+- Good domain to get experience learning something new with the help of an LLM.
+- Understanding the basics can help you in your work
+- Why not - It is different, it has potential to be fun.
 
 ---
 
