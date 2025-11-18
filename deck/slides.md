@@ -393,11 +393,19 @@ int main(void)
 }
 ```
 
+---
 
+![Virtual machine to bare metal programming](assets/vm_to_bare_metal_diagram.png)
 
 ---
 
-## Educational or realistic?
+## Time to hack!
+
+In groups of about four people, identify a problem and design a product to solve it. Use the cpulator to prototype your product.
+
+Humor is appreciated, both in the problems and the solutions. Feel free to imagine peripheral devices such as sensors and actuators connected to the virtual dev board.
+
+At 15:00 we regroup and present the products to each other.
 
 ---
 
@@ -408,13 +416,3 @@ int main(void)
 - Can you instruct the LLM to create a personalized learning experience?
 - Can it generate full solutions for you?
 - In what way was the LLM helpful, and when did it only bring you confusion?
-
----
-
-## What's next?
-
-Use the simulator, experiment, add breakpoints and debug, inspect the memory.
-
-- If you make something, please send us the script.
-
----
