@@ -43,6 +43,23 @@ waitloop:
     BX LR               // Return from subroutine
 ```
 
+### Loading values
+
+```assembly
+.global _start
+.equ CONSTANT, 0xFF200000
+_start_:
+    LDR R0, =4000000    // Use equal sign for values too large to be an immediate value. A pseudo instruction.
+    LDR R0, #16         // Loads register with decimal 16. Immediate values are prefixed with hash.
+    LDR R0, #0xB        // Loads register with hexadecimal value 11. Immediate value.
+    LDR R0, 0b1011      // Loads register with binary value of 11. Immediate value.
+    LDR R0, =0xFF200000 // Loads register with hexadecimal value that corresponds to address in memory.
+    LDR R0, =CONSTANT // Loads register with CONSTANT. .equ is a directive that allows you to define constants with a symbolic name. Assembler will replace symbolic name with actual value when compiling.
+```
+
+[What is a pseudo-instructions?](questions.md#what-are-pseudo-instructions)
+[What is an immediate?](questions.md#what-is-an-immediate-value)
+
 ### Managing link register when calling subroutines
 
 Especially when calling a subroutine within a subroutine it is useful to put LR on the stack by using `PUSH`and `POP`
