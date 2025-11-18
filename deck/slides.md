@@ -13,7 +13,7 @@ Inspired by Olve Maudal's brilliant "Introduction to Bare Metal Coding" mini-cou
 
 ##### Exercise: Ultra-low-power "smart collar" for sheep
 
-![Ultra Low Poer Smart Collar For sheep](assets/thinking_exercise.png)
+![Ultra Low Power Smart Collar For sheep](assets/thinking_exercise.png)
 
 ---
 
