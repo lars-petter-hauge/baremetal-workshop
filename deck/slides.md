@@ -5,7 +5,7 @@
 #### No Drivers, No Operating System
 
 
-A follow up to Olve Maudal's brilliant "Introduction to Bare Metal Coding" mini-course.
+Inspired by Olve Maudal's brilliant "Introduction to Bare Metal Coding" mini-course.
 
 ![no drivers, no operating system](assets/bare_metal.png)
 
@@ -33,11 +33,10 @@ A follow up to Olve Maudal's brilliant "Introduction to Bare Metal Coding" mini-
 
 ---
 
-## Blink LED
+## Hello World! 
 
 What is the first program you always write in a new language?
 
-Hello World?
 
 In embedded programming we typically start by blinking a LED.
 
@@ -156,6 +155,114 @@ int main(void)
 --
 
 ##### Do you see any problems with our current implementation?
+
+--
+
+```assembly
+.global _start
+
+.equ LEDR_BASE, 0xFF200000
+
+_start:
+    ldr     r0, =LEDR_BASE
+
+blink_loop:
+	ldr     r3, [r0]
+	orr     r3, r3, #1
+    str     r3, [r0]
+    bl      delay
+
+	ldr     r3, [r0]
+	bic     r3, r3, #1
+    str     r3, [r0]
+    bl      delay
+
+    b       blink_loop
+
+delay:
+    ldr     r2, =10000000
+
+waitloop:
+    sub     r2, #1
+    cmp     r2, #0
+    bne     waitloop
+    bx      lr
+```
+
+--
+
+```c
+#include <stdint.h>
+
+volatile uint32_t * LEDR = (uint32_t*)0xFF200000;
+
+void wait(void) {
+    volatile int i;
+    for (i = 0; i < 3000000; i++);
+}
+
+int main(void)
+{
+	while (1) {
+        *LEDR |= 0b1;
+		wait();
+		*LEDR &= ~0b1;
+		wait();
+	}
+}
+```
+
+--
+
+### We can also flip bits with XOR
+
+```assembly
+
+.global _start
+
+.equ LEDR_BASE, 0xFF200000
+
+_start:
+    ldr     r0, =LEDR_BASE
+
+blink_loop:
+	ldr		r3, [r0]
+	eor		r3, r3, #1
+    str     r3, [r0]
+    bl      delay
+
+    b       blink_loop
+
+delay:
+    ldr     r2, =10000000
+
+waitloop:
+    sub     r2, #1
+    cmp     r2, #0
+    bne     waitloop
+    bx      lr
+```
+
+--
+
+```c
+#include <stdint.h>
+
+volatile uint32_t * LEDR = (uint32_t*)0xFF200000;
+
+void wait(void) {
+    volatile int i;
+    for (i = 0; i < 3000000; i++);
+}
+
+int main(void)
+{
+	while (1) {
+        *LEDR ^= 0b1;
+		wait();
+	}
+}
+```
 
 ---
 
