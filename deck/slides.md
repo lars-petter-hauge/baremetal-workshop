@@ -406,13 +406,3 @@ In groups of about four people, identify a problem and design a product to solve
 Humor is appreciated, both in the problems and the solutions. Feel free to imagine peripheral devices such as sensors and actuators connected to the virtual dev board.
 
 At 15:00 we regroup and present the products to each other.
-
----
-
-## Use LLM as a tutor
-
-[chat.equinor.com](https://chat.equinor.com) will be your tutor.
-
-- Can you instruct the LLM to create a personalized learning experience?
-- Can it generate full solutions for you?
-- In what way was the LLM helpful, and when did it only bring you confusion?
