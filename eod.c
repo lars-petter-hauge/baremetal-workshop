@@ -1,4 +1,5 @@
 #include <stdint.h>
+#define AUDIO_BASE       0xFF203040  // Audio device
 
 volatile uint32_t *HEX3_HEX0 = (uint32_t *)0xFF200020; // HEX3–0
 
