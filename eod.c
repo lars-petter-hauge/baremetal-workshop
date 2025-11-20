@@ -32,6 +32,24 @@ void writeNumber(int number)
     *HEX3_HEX0 = value;
 }
 
+// Play a short beep using the audio device
+void beep(void) {
+    volatile int *audio_ptr = (int *)AUDIO_BASE;
+    int tone = 50; // Frequency control (lower = higher pitch)
+    int duration = 1000; // Number of samples
+
+    for (int i = 0; i < duration; i++) {
+        // Wait until there is space in the FIFO
+        while ((audio_ptr[1] & 0xFF) == 0); // Left FIFO space
+        while ((audio_ptr[1] & 0xFF00) == 0); // Right FIFO space
+
+        // Write same sample to left and right channels
+        int sample = (i / tone % 2) ? 0x7FFFFFFF : 0x80000000;
+        audio_ptr[2] = sample; // Left
+        audio_ptr[3] = sample; // Right
+    }
+}
+
 int main(void)
 {
     int timer = 20;
@@ -39,6 +57,7 @@ int main(void)
     while (timer >= 0)
     {
         writeNumber(timer); // update HEX display
+        beep();
         delay(5000000);     // ~1 second delay (adjust for your clock)
         timer--;
     }
